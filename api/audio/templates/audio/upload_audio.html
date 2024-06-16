@@ -1,0 +1,14 @@
+{% extends "audio/base.html" %}
+
+{% block title %}Upload Audio{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <h1 class="mb-4">Загрузка аудио</h1>
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Загрузить</button>
+    </form>
+</div>
+{% endblock %}

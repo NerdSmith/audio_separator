@@ -1,0 +1,21 @@
+{% extends "audio/base.html" %}
+
+{% block title %}Audio List{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <h1 class="mb-4">Список аудио</h1>
+    <ul class="list-group">
+        {% for audio in audios %}
+            <li class="list-group-item">
+                {{ audio.audio.name|slice:"6:" }}:
+                <a href="{{ audio.audio.url }}" class="btn btn-sm btn-outline-secondary">Оригинал</a>
+                {% if audio.processed_audio %}
+                    | <a href="{{ audio.processed_audio.url }}" class="btn btn-sm btn-outline-success">Голос</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'upload_audio' %}" class="btn btn-success mt-4">Загрузить аудио</a>
+</div>
+{% endblock %}
